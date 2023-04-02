@@ -8,7 +8,8 @@
 import Foundation
 @MainActor
 class PlantModel: ObservableObject {
-    @Published var plants : [Datum] = []
+
+    @Published var plants : [Plant] = []
     
     
     func reload() async {
@@ -16,8 +17,8 @@ class PlantModel: ObservableObject {
         let urlSession = URLSession.shared
         
         do{
-            let (_, _) = try await urlSession.data (from: url)
-           // let welcome = try? JSONDecoder().decode(Welcome.self, from: json)
+            let (data, _) = try await urlSession.data (from: url)
+           // let welcome = try? JSONDecoder().decode(Welcome.self, from: data)
         }
         
         catch {

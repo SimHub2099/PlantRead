@@ -8,7 +8,12 @@
 import Foundation
 
 
-struct data: Identifiable, Codable {
+//
+//import Foundation
+//
+//
+struct Plant: Identifiable, Codable {
+
     //to match api parameters
     var id: Int
     var common_name: String

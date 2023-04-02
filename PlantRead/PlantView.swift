@@ -10,11 +10,10 @@ struct PlantView: View {
     @StateObject var plantModel = PlantModel()
     
     var body: some View {
-        //Text("Plants:")
         //display list of plants here
         List(plantModel.plants) { plant in
-            Text(Datum.common_name)
-            Text(Datum.sunlight)
+            Text(plant.common_name)
+            Text(plant.sunlight)
         }
         .task {
             await self.plantModel.reload()
