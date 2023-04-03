@@ -17,7 +17,7 @@ struct Plant: Identifiable, Codable {
     //to match api parameters
     var id: Int
     var common_name: String
-    var sunlight: String
+    //var sunlight: String
 
 }
 
