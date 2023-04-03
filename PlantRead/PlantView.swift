@@ -12,9 +12,10 @@ struct PlantView: View {
     
     var body: some View {
         //display list of plants here
-        List(plantModel.plants) { plant in
-            Text(plant.common_name)
-            Text(plant.sunlight)
+        VStack {
+            List(plantModel.plants) { plant in
+                Text(plant.common_name)
+            }
         }
         .task {
             await self.plantModel.reload()

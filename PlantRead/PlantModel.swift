@@ -12,12 +12,20 @@ class PlantModel: ObservableObject {
     
     
     func reload() async {
+        // initial api: "https://perenual.com/api/species-list?page=1&key=sk-n6BF6425eff595f73399"
         let url = URL(string: "https://perenual.com/api/species-list?page=1&key=sk-n6BF6425eff595f73399")!
         let urlSession = URLSession.shared
         
         do{
-            let (data, _) = try await urlSession.data (from: url)
-           // let welcome = try? JSONDecoder().decode(Welcome.self, from: data)
+            struct Response: Decodable {
+                let data: [Plant]
+            }
+             
+            let (data, _) = try await urlSession.data(from: url)
+            let response = try JSONDecoder().decode(Response.self, from: data)
+            self.plants = response.data
+            
+           //let welcome = try? JSONDecoder().decode(Plant.self, from: Plant)
         }
         
         catch {
